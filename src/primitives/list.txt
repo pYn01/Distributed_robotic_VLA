@@ -1,0 +1,246 @@
+A. APPROACH / POSITIONING PRIMITIVES
+    1. reach_leaf
+    2. position_above_leaf
+    3. scan_area
+
+B. DELICATE CONTACT PRIMITIVES
+    4. touch_leaf
+    5. push_leaf
+    6. lift_leaf
+    7. hold_leaf
+
+C. COMPLEX MANIPULATION PRIMITIVES
+    8. separate_leaves
+    9. flip_leaf
+    10. move_leaf_sideways
+
+D. INSPECTION PRIMITIVES
+    11. inspect_under_leaf
+    12. inspect_leaf_surface
+    13. inspect_stem
+
+E. RELEASE / RESET PRIMITIVES
+    14. release_leaf
+    15. return_home
+
+
+
+-----------------------------------------------------------------------------------------------
+1. reach_leaf
+
+    Description:
+        Move the end-effector close to the target leaf.
+
+    Preconditions:
+        A target leaf position is detected.
+
+    Parameters:
+        - target_position = (x, y, z)
+        - approach_speed
+
+    Effect:
+        End-effector reaches proximity of the leaf.
+-----------------------------------------------------------------------------------------------
+2. position_above_leaf
+
+    Description:
+        Position the end-effector directly above the leaf without touching it.
+
+    Preconditions:
+        Leaf is visible and localized.
+
+    Parameters:
+        - offset_height
+
+    Effect:
+        Robot hovers above the leaf.
+-----------------------------------------------------------------------------------------------
+3. scan_area
+
+    Description:
+        Perform small oscillatory movements to improve visual perception 
+        (e.g., exposure, stereo depth, optical flow).
+
+    Preconditions:
+        Safe free space around the robot.
+
+    Parameters:
+        - scan_radius
+        - scan_pattern (circle/zigzag)
+
+    Effect:
+        Improved visual information around the leaf.
+-----------------------------------------------------------------------------------------------
+4. touch_leaf
+
+    Description:
+        Gently touch the surface of the leaf with minimal force.
+
+    Preconditions:
+        End-effector is within 1–2 cm.
+
+    Parameters:
+        - force_threshold
+
+    Effect:
+        Establish controlled physical contact.
+-----------------------------------------------------------------------------------------------
+5. push_leaf
+
+    Description:
+        Apply lateral force to move the leaf sideways.
+
+    Preconditions:
+        Leaf reachable by the end-effector.
+
+    Parameters:
+        - direction (unit vector)
+        - displacement
+
+    Effect:
+        Leaf is displaced laterally.
+-----------------------------------------------------------------------------------------------
+6. lift_leaf
+
+    Description:
+        Slide under the leaf edge and lift it gently.
+
+    Preconditions:
+        Leaf edge accessible.
+
+    Parameters:
+        - lift_height
+        - grip_strength
+
+    Effect:
+        Leaf is elevated.
+-----------------------------------------------------------------------------------------------
+7. hold_leaf
+
+    Description:
+        Maintain the leaf in a fixed position.
+
+    Preconditions:
+        Leaf is already touched or grasped.
+
+    Parameters:
+        - hold_force
+
+    Effect:
+        Leaf remains stabilized.
+-----------------------------------------------------------------------------------------------
+8. separate_leaves
+
+    Description:
+        Create a small gap between overlapping leaves.
+
+    Preconditions:
+        Two or more leaves detected close together.
+
+    Parameters:
+        - spread_distance
+
+    Effect:
+        Leaves become separated, enabling visibility.
+-----------------------------------------------------------------------------------------------
+
+9. flip_leaf
+
+    Description:
+        Grab a leaf edge and flip it to expose the underside.
+
+    Preconditions:
+        Edge reachable.
+
+    Parameters:
+        - flip_angle
+
+    Effect:
+        Leaf underside becomes visible.
+-----------------------------------------------------------------------------------------------
+10. move_leaf_sideways
+
+    Description:
+        Move the leaf to the left or right to reveal occluded regions.
+
+    Preconditions:
+        Leaf is frontal and reachable.
+
+    Parameters:
+        - direction (left/right)
+        - distance
+
+    Effect:
+        Leaf shifts laterally.
+-----------------------------------------------------------------------------------------------
+11. inspect_under_leaf
+
+    Description:
+        Move the camera under the leaf to inspect for pests or disease.
+
+    Preconditions:
+        Leaf must be lifted or moved.
+
+    Parameters:
+        - camera_pose_offset
+
+    Effect:
+        Underside is visible.
+-----------------------------------------------------------------------------------------------
+12. inspect_leaf_surface
+
+    Description:
+        Bring the camera close to the top surface of the leaf.
+
+    Preconditions:
+        Leaf surface not occluded.
+
+    Parameters:
+        - focus_distance
+
+    Effect:
+        Top surface becomes observable in detail.
+-----------------------------------------------------------------------------------------------
+13. inspect_stem
+
+    Description:
+        Approach the plant stem for close visual inspection.
+
+    Preconditions:
+        Stem visible and safe to approach.
+
+    Parameters:
+        - camera_offset
+
+    Effect:
+        Stem is clearly observed.
+-----------------------------------------------------------------------------------------------
+14. release_leaf
+
+    Description:
+        Release the leaf if currently held or stabilized.
+
+    Preconditions:
+        Leaf is being held.
+
+    Parameters:
+        - None
+
+    Effect:
+        Leaf returns to natural state.
+-----------------------------------------------------------------------------------------------
+15. return_home
+
+    Description:
+        Move the robot arm to a predefined safe home pose.
+
+    Preconditions:
+        None
+
+    Parameters:
+        - home_pose
+
+    Effect:
+        Robot returns to safety configuration.
+-----------------------------------------------------------------------------------------------
+
